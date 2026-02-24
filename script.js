@@ -315,6 +315,39 @@ document.addEventListener('DOMContentLoaded', function () {
         element.innerHTML = content;
     }
 
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+    });
+
+    // Scroll Progress Logic
+    const scrollProgressBar = document.getElementById('scroll-progress');
+
+    function updateScrollProgress() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercentage = (scrollTop / scrollHeight) * 100;
+
+        if (scrollProgressBar) {
+            scrollProgressBar.style.width = scrollPercentage + '%';
+        }
+    }
+
+    window.addEventListener('scroll', updateScrollProgress);
+    // Initialize once
+    updateScrollProgress();
+
     // Add CSS for loading spinner
     const style = document.createElement('style');
     style.textContent = `

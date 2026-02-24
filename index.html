@@ -28,6 +28,11 @@
 </head>
 
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -60,6 +65,10 @@
                     <a href="#contact" class="nav-link">Contact</a>
                 </li>
             </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -112,7 +121,7 @@
                         <p class="info-label">Based in Germany</p>
                         <p class="info-text">Specializing in</p>
                         <p class="info-text">simulation-driven development,</p>
-                        <p class="info-text">XR prototyping &</p>
+                        <p class="info-text">spatial computing &</p>
                         <p class="info-text">engineering workflow automation.</p>
                     </div>
                     <p class="hero-description">
@@ -148,8 +157,8 @@
                     <div class="about-text">
                         <p>
                             Hello there! I'm Vivek Hari, I just graduated with Masters degree in Mechatronic and
-                            Cyber-Physical Systems from
-                            Technische Hochschule Deggendorf (THD). Along with my strong foundation in Mechanical
+                            Cyber-Physical Systems from Technische Hochschule Deggendorf.
+                            Along with my strong foundation in Mechanical
                             Engineering, I bring a wealth of experience to the table. My professional journey spans
                             software development, finite element analysis (FEA), workflow automation and game
                             development, showcasing a blend of technical expertise and practical application.
