@@ -24,7 +24,8 @@
         gtag('js', new Date());
         gtag('config', 'G-SJKFF1VTB2');
     </script>
-
+    <script src="https://unpkg.com/three"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
 </head>
 
 <body>
@@ -45,6 +46,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#journey" class="nav-link">Journey</a>
                 </li>
                 <li class="nav-item">
                     <a href="#education" class="nav-link">Education</a>
@@ -160,7 +164,9 @@
                             Cyber-Physical Systems from Technische Hochschule Deggendorf.
                             Along with my strong foundation in Mechanical
                             Engineering, I bring a wealth of experience to the table. My professional journey spans
-                            software development, finite element analysis, workflow automation (CAE, CAD and XR) and AR/VR application development, showcasing a blend of technical expertise and practical application in multi-disciplinary domains.
+                            software development, finite element analysis, workflow automation (CAE, CAD and XR) and
+                            AR/VR application development, showcasing a blend of technical expertise and practical
+                            application in multi-disciplinary domains.
                         </p>
                         <p>
                             I am driven by a relentless passion for innovation and a commitment to staying at the
@@ -335,6 +341,74 @@
             </div>
     </section>
 
+    <!-- Journey Section -->
+    <section id="journey" class="journey">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Journey</h2>
+                <p class="section-subtitle">From India to Germany, pursuing my passion for mechatronics engineering.</p>
+            </div>
+
+            <div class="journey-content">
+                <div class="journey-text">
+                    <p>After completing my Bachelor's in Mechanical Engineering from TKMCE and accumulating valuable 4
+                        years of R&D experience at
+                        MRF Tyres in India, I decided to chase my passion for Mechatronics in Germany.
+                        This led me to pursue a Master's degree in THD and take up challenging roles at CARIAD and BMW
+                        Group,
+                        where I
+                        continue to grow and build innovative solutions using simulation-driven development, spatial
+                        computing and automation.</p>
+                </div>
+
+                <div class="journey-interactive">
+                    <!-- Timeline Control -->
+                    <div class="journey-timeline">
+                        <div class="timeline-step active" data-location="india" tabindex="0">
+                            <span class="step-dot"></span>
+                            <span class="step-label">TKMCE<br><small>2015-2019</small></span>
+                            <span class="step-line"></span>
+                        </div>
+                        <div class="timeline-step" data-location="mrf" tabindex="0">
+                            <span class="step-dot"></span>
+                            <span class="step-label">MRF Tyres<br><small>2019-2023</small></span>
+                            <span class="step-line"></span>
+                        </div>
+                        <div class="timeline-step" data-location="thd" tabindex="0">
+                            <span class="step-dot"></span>
+                            <span class="step-label">THD<br><small>2023-2026</small></span>
+                            <span class="step-line"></span>
+                        </div>
+                        <div class="timeline-step" data-location="cariad" tabindex="0">
+                            <span class="step-dot"></span>
+                            <span class="step-label">CARIAD SE<br><small>2023-2024</small></span>
+                            <span class="step-line"></span>
+                        </div>
+                        <div class="timeline-step" data-location="bmw" tabindex="0">
+                            <span class="step-dot"></span>
+                            <span class="step-label">BMW Group<br><small>2024-2025</small></span>
+                        </div>
+                    </div>
+
+                    <!-- Globe Container -->
+                    <div class="globe-wrapper">
+                        <div id="globeViz"></div>
+
+                        <!-- Info Overlay -->
+                        <div class="globe-info-overlay" id="globe-info">
+                            <img src="assets/img/tkmce_logo.jpeg" alt="Logo" id="globe-info-logo">
+                            <div class="globe-info-content">
+                                <h3 id="globe-info-title">B.Tech Mechanical Engineering</h3>
+                                <p id="globe-info-team">TKM College of Engineering</p>
+                                <p class="globe-info-time" id="globe-info-time">Aug 2015 - Jul 2019</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Education Section -->
     <section id="education" class="education">
         <div class="container">
@@ -399,10 +473,19 @@
                     <p class="company">BMW Group</p>
                     <p class="timeline-location">Garching bei München, Germany</p>
                     <ul class="achievements">
-                        <li><strong>XR Workflow Design:</strong> Designed and validated a complete XR workflow for vehicle interior prototyping using Blender, Unity, and Apple Vision Pro, addressing key challenges in immersive model visualization.</li>
-    <li><strong>Application Development:</strong> Developed two interconnected Unity applications, the XR Viewer and XR Controller, which facilitates interactive visualization and multi-user collaboration in shared mixed-reality environments.</li>
-    <li><strong>Automated Scene Creation:</strong> Created an automated model import and configuration system in Unity, utilizing scriptable objects and Unity’s serialization methods to streamline scene setup, material and event/UI-driven animation assignments without manual intervention.</li>
-    <li><strong>Model Preparation Guidelines:</strong> Developed a custom Blender add-on to standardize model structuring, animation setup, and material assignment, ensuring seamless integration with the Unity automation tool.</li>
+                        <li><strong>XR Workflow Design:</strong> Designed and validated a complete XR workflow for
+                            vehicle interior prototyping using Blender, Unity, and Apple Vision Pro, addressing key
+                            challenges in immersive model visualization.</li>
+                        <li><strong>Application Development:</strong> Developed two interconnected Unity applications,
+                            the XR Viewer and XR Controller, which facilitates interactive visualization and multi-user
+                            collaboration in shared mixed-reality environments.</li>
+                        <li><strong>Automated Scene Creation:</strong> Created an automated model import and
+                            configuration system in Unity, utilizing scriptable objects and Unity’s serialization
+                            methods to streamline scene setup, material and event/UI-driven animation assignments
+                            without manual intervention.</li>
+                        <li><strong>Model Preparation Guidelines:</strong> Developed a custom Blender add-on to
+                            standardize model structuring, animation setup, and material assignment, ensuring seamless
+                            integration with the Unity automation tool.</li>
                     </ul>
                 </div>
 
@@ -415,12 +498,25 @@
                     <p class="company">BMW Group</p>
                     <p class="timeline-location">Garching bei München, Germany</p>
                     <ul class="achievements">
-                        <li><strong>XR Application Development:</strong> Spearheaded the development of an XR application in Unity for Apple Vision Pro and Meta Quest 3, implementing advanced interactive and shader techniques, considering the performance for real-time interactions.</li>
-    <li><strong>C# Scripting:</strong> Engineered OOPs based C# components in Unity to manage precise model spawning over markers, create dynamic UI elements, and enable real-time material swapping, ensuring a highly interactive user experience.</li>
-    <li><strong>Multiplayer Collaboration:</strong> Designed and implemented a multiplayer collaboration system that allows multiple users to interact with the same virtual model in real-time, utilizing Unity's Netcode for GameObjects for networking and seamless connectivity.</li>
-    <li><strong>User Experience Testing:</strong> Led rigorous testing cycles, gathering and incorporating user feedback to enhance the application’s usability, demonstrating a commitment to user-centered design principles.</li>
-    <li><strong>Arduino Development:</strong> Real-time physical seat rotation tracking using an ESP32 with BMI270+BMM150 9-axis sensors, streaming orientation data via Wi-Fi (UDP) to a Unity XR application on Apple Vision Pro for seamless physical-to-virtual seat synchronization with a low-cost, scalable modular setup.</li>
-  
+                        <li><strong>XR Application Development:</strong> Spearheaded the development of an XR
+                            application in Unity for Apple Vision Pro and Meta Quest 3, implementing advanced
+                            interactive and shader techniques, considering the performance for real-time interactions.
+                        </li>
+                        <li><strong>C# Scripting:</strong> Engineered OOPs based C# components in Unity to manage
+                            precise model spawning over markers, create dynamic UI elements, and enable real-time
+                            material swapping, ensuring a highly interactive user experience.</li>
+                        <li><strong>Multiplayer Collaboration:</strong> Designed and implemented a multiplayer
+                            collaboration system that allows multiple users to interact with the same virtual model in
+                            real-time, utilizing Unity's Netcode for GameObjects for networking and seamless
+                            connectivity.</li>
+                        <li><strong>User Experience Testing:</strong> Led rigorous testing cycles, gathering and
+                            incorporating user feedback to enhance the application’s usability, demonstrating a
+                            commitment to user-centered design principles.</li>
+                        <li><strong>Arduino Development:</strong> Real-time physical seat rotation tracking using an
+                            ESP32 with BMI270+BMM150 9-axis sensors, streaming orientation data via Wi-Fi (UDP) to a
+                            Unity XR application on Apple Vision Pro for seamless physical-to-virtual seat
+                            synchronization with a low-cost, scalable modular setup.</li>
+
                     </ul>
                 </div>
 
@@ -433,14 +529,31 @@
                     <p class="company">CARIAD SE</p>
                     <p class="timeline-location">Ingolstadt, Germany</p>
                     <ul class="achievements">
-                        <li><strong>Research and Compliance:</strong> Conducted in-depth research on laws and regulations governing autonomous driving systems, utilizing resources such as government publications and industry standards to ensure compliance with legal frameworks (e.g., ISO 26262, ISO21448).</li>
-    <li><strong>Scenario Development:</strong> Employed the Pegasus methodology to document a range of driving scenarios, facilitating rigorous testing of software components to enhance robustness and reliability. Utilized tools like MATLAB for simulations and data analysis.</li>
-    <li><strong>Model Implementation:</strong> Successfully implemented the Constant Yaw Rate and Acceleration (CYRA) motion model in MATLAB, enabling precise simulation of vehicle dynamics under various conditions.</li>
-    <li><strong>Code Optimization:</strong> Reworked Python code for calculating metrics related to criticality analysis methods, employing libraries such as NumPy and Matplotlib to visualize data, thus improving performance by 35% and enhancing code reusability.</li>
-    <li><strong>Criticality Analysis:</strong> Conducted detailed comparisons of criticality analysis methods, employing statistical techniques to assess their applicability and performance in different driving scenarios. Documented results in comprehensive reports for decision-making purposes.</li>
-    <li><strong>Database Evaluation:</strong> Investigated the usability of the Common Road Database, evaluating its structure and content to support future decision-making on its integration within the autonomous driving framework.</li>
-    <li><strong>Documentation Migration:</strong> Assisted in migrating existing software requirements to a new Doc as Code tool (Sphinx-Needs), ensuring compliance with internal policies.</li>
-  
+                        <li><strong>Research and Compliance:</strong> Conducted in-depth research on laws and
+                            regulations governing autonomous driving systems, utilizing resources such as government
+                            publications and industry standards to ensure compliance with legal frameworks (e.g., ISO
+                            26262, ISO21448).</li>
+                        <li><strong>Scenario Development:</strong> Employed the Pegasus methodology to document a range
+                            of driving scenarios, facilitating rigorous testing of software components to enhance
+                            robustness and reliability. Utilized tools like MATLAB for simulations and data analysis.
+                        </li>
+                        <li><strong>Model Implementation:</strong> Successfully implemented the Constant Yaw Rate and
+                            Acceleration (CYRA) motion model in MATLAB, enabling precise simulation of vehicle dynamics
+                            under various conditions.</li>
+                        <li><strong>Code Optimization:</strong> Reworked Python code for calculating metrics related to
+                            criticality analysis methods, employing libraries such as NumPy and Matplotlib to visualize
+                            data, thus improving performance by 35% and enhancing code reusability.</li>
+                        <li><strong>Criticality Analysis:</strong> Conducted detailed comparisons of criticality
+                            analysis methods, employing statistical techniques to assess their applicability and
+                            performance in different driving scenarios. Documented results in comprehensive reports for
+                            decision-making purposes.</li>
+                        <li><strong>Database Evaluation:</strong> Investigated the usability of the Common Road
+                            Database, evaluating its structure and content to support future decision-making on its
+                            integration within the autonomous driving framework.</li>
+                        <li><strong>Documentation Migration:</strong> Assisted in migrating existing software
+                            requirements to a new Doc as Code tool (Sphinx-Needs), ensuring compliance with internal
+                            policies.</li>
+
                     </ul>
                 </div>
 
@@ -453,10 +566,19 @@
                     <p class="company">MRF Tyres</p>
                     <p class="timeline-location">Chennai, India</p>
                     <ul class="achievements">
-                        <li><strong>Leadership in Simulation:</strong> Led the development and validation of advanced simulation methodologies, employing FEA in Abaqus CAE to evaluate tyre characteristics and performance metrics.</li>
-    <li><strong>Model Optimization:</strong> Designed and simulated over 100 tyre models, utilizing optimization algorithms to enhance traction, durability, and energy efficiency (Rolling Resistance), and conducting sensitivity analysis to validate results.</li>
-    <li><strong>CAE Workflow Automation:</strong> Managed automation of end-to-end simulation workflows using Python and batch scripting, integrating libraries such as Pandas, Matplotlib and NumPy for data handling and analysis, which reduced design validation time by over 70%.</li>
-    <li><strong>Cross-Functional Collaboration:</strong> Worked closely with manufacturing teams to validate simulation data through indoor tyre tests of over 50 tyre models, enhancing the reliability and accuracy of the simulation framework.</li>
+                        <li><strong>Leadership in Simulation:</strong> Led the development and validation of advanced
+                            simulation methodologies, employing FEA in Abaqus CAE to evaluate tyre characteristics and
+                            performance metrics.</li>
+                        <li><strong>Model Optimization:</strong> Designed and simulated over 100 tyre models, utilizing
+                            optimization algorithms to enhance traction, durability, and energy efficiency (Rolling
+                            Resistance), and conducting sensitivity analysis to validate results.</li>
+                        <li><strong>CAE Workflow Automation:</strong> Managed automation of end-to-end simulation
+                            workflows using Python and batch scripting, integrating libraries such as Pandas, Matplotlib
+                            and NumPy for data handling and analysis, which reduced design validation time by over 70%.
+                        </li>
+                        <li><strong>Cross-Functional Collaboration:</strong> Worked closely with manufacturing teams to
+                            validate simulation data through indoor tyre tests of over 50 tyre models, enhancing the
+                            reliability and accuracy of the simulation framework.</li>
                     </ul>
                 </div>
 
@@ -469,11 +591,19 @@
                     <p class="company">MRF Tyres</p>
                     <p class="timeline-location">Chennai, India</p>
                     <ul class="achievements">
-                        <li><strong>Simulation Development:</strong> Assisted in developing and validating advanced simulation methodologies using Finite Element Analysis (FEA) principles in Abaqus CAE, applying mesh refinement techniques to ensure accurate results for static and dynamic tyre characteristics.</li>
-    <li><strong>Model Creation:</strong> Created high-fidelity 2D and 3D tyre models using CATIA and Altair HyperMesh, employing design-for-manufacturability principles to optimize models for production.</li>
-    <li><strong>Testing Correlation:</strong> Collaborated with material and indoor testing teams to correlate simulation results with physical track testing data, using statistical analysis methods to improve model accuracy and overall tyre performance.</li>
-    <li><strong>CAD Automation:</strong> Automated CAD modeling workflows using CATIA VBA scripting, which reduced repetitive modeling efforts by 78% and improved design team efficiency.</li>
- 
+                        <li><strong>Simulation Development:</strong> Assisted in developing and validating advanced
+                            simulation methodologies using Finite Element Analysis (FEA) principles in Abaqus CAE,
+                            applying mesh refinement techniques to ensure accurate results for static and dynamic tyre
+                            characteristics.</li>
+                        <li><strong>Model Creation:</strong> Created high-fidelity 2D and 3D tyre models using CATIA and
+                            Altair HyperMesh, employing design-for-manufacturability principles to optimize models for
+                            production.</li>
+                        <li><strong>Testing Correlation:</strong> Collaborated with material and indoor testing teams to
+                            correlate simulation results with physical track testing data, using statistical analysis
+                            methods to improve model accuracy and overall tyre performance.</li>
+                        <li><strong>CAD Automation:</strong> Automated CAD modeling workflows using CATIA VBA scripting,
+                            which reduced repetitive modeling efforts by 78% and improved design team efficiency.</li>
+
                     </ul>
                 </div>
             </div>

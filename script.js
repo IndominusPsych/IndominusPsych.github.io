@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
         rootMargin: '0px 0px -20px 0px'
     };
 
+
     const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -454,3 +455,134 @@ window.portfolioUtils = {
         type();
     }
 };
+
+// --- Journey Globe Initialization ---
+function initJourneyGlobe() {
+    const globeContainer = document.getElementById('globeViz');
+    // Ensure globeContainer exists and Globe.gl is loaded
+    if (!globeContainer || typeof Globe === 'undefined') return;
+
+    // Location data
+    const journeyData = {
+        'india': { lat: 8.8932, lng: 76.6340, id: 'india', logo: 'assets/img/tkmce_logo.jpeg', title: 'B.Tech Mechanical Engineering', team: 'TKM College of Engineering', time: 'Aug 2015 - Jul 2019' },
+        'mrf': { lat: 13.0827, lng: 80.2707, id: 'mrf', logo: 'assets/img/mrf_logo.png', title: 'Structural Simulation and AutomationEngineer', team: 'MRF Tyres, Chennai', time: 'Sep 2019 - Mar 2023' },
+        'thd': { lat: 48.8407, lng: 12.9554, id: 'thd', logo: 'assets/img/thd_logo.png', title: 'M.Eng Mechatronic and Cyber-Physical Systems', team: 'TH Deggendorf', time: 'Mar 2023 - Jan 2026' },
+        'cariad': { lat: 48.7665, lng: 11.4257, id: 'cariad', logo: 'assets/img/cariad_logo.svg', title: 'ADAS/AD Development Engineer', team: 'CARIAD SE', time: 'Jun 2023 - May 2024' },
+        'bmw': { lat: 48.2489, lng: 11.6465, id: 'bmw', logo: 'assets/img/bmw_logo.png', title: 'XR Development Engineer', team: 'BMW Group', time: 'Oct 2024 - Nov 2025' }
+    };
+
+    const locationsArray = Object.values(journeyData);
+
+    // Path arcs connecting locations step by step
+    const arcsData = [
+        { startLat: 8.8932, startLng: 76.6340, endLat: 13.0827, endLng: 80.2707 }, // TKMCE to MRF
+        { startLat: 13.0827, startLng: 80.2707, endLat: 48.8407, endLng: 12.9554 }, // MRF to THD
+        { startLat: 48.8407, startLng: 12.9554, endLat: 48.7665, endLng: 11.4257 }, // THD to CARIAD
+        { startLat: 48.7665, startLng: 11.4257, endLat: 48.2489, endLng: 11.6465 }  // CARIAD to BMW
+    ];
+
+    // Initialize Globe
+    const world = Globe()
+        (globeContainer)
+        .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+        .backgroundColor('rgba(0,0,0,0)') // Transparent background
+        .showAtmosphere(true)
+        .atmosphereColor('lightskyblue')
+        .atmosphereAltitude(0.15)
+        .width(globeContainer.clientWidth)
+        .height(globeContainer.clientHeight);
+
+    // Resize map on window resize
+    window.addEventListener('resize', () => {
+        world.width(globeContainer.clientWidth).height(globeContainer.clientHeight);
+    });
+
+    // Add arc data
+    world.arcsData(arcsData)
+        .arcColor(() => '#0db486') // Primary green theme
+        .arcDashLength(0.4)
+        .arcDashGap(0.2)
+        .arcDashAnimateTime(1500)
+        .arcStroke(1);
+
+    // Add custom HTML elements for markers at each location
+    world.htmlElementsData(locationsArray)
+        .htmlElement(d => {
+            const el = document.createElement('div');
+            el.innerHTML = `
+                <div class="marker-pin">
+                    <img src="${d.logo}" class="marker-logo" alt="Logo">
+                </div>
+            `;
+            el.style.pointerEvents = 'auto'; // allow clicking through globe
+            el.style.cursor = 'pointer';
+            el.onclick = () => activateLocation(d.id);
+            return el;
+        });
+
+    // Configure globe controls
+    world.controls().autoRotate = true;
+    world.controls().autoRotateSpeed = 0.5;
+    world.controls().enableZoom = true;
+
+    // Logic for Interactions
+    const infoOverlay = document.getElementById('globe-info');
+    const infoLogo = document.getElementById('globe-info-logo');
+    const infoTitle = document.getElementById('globe-info-title');
+    const infoTeam = document.getElementById('globe-info-team');
+    const infoTime = document.getElementById('globe-info-time');
+    const timelineSteps = document.querySelectorAll('.timeline-step');
+
+    function activateLocation(locKey) {
+        const data = journeyData[locKey];
+        if (!data) return;
+
+        // Stop auto rotation temporarily
+        world.controls().autoRotate = false;
+
+        // Update info overlay details
+        infoLogo.src = data.logo;
+        infoTitle.innerText = data.title;
+        infoTeam.innerText = data.team;
+        infoTime.innerText = data.time;
+
+        // Show overlay with animation
+        infoOverlay.classList.add('show');
+
+        // Fly camera to location
+        world.pointOfView({ lat: data.lat, lng: data.lng, altitude: 0.8 }, 1000);
+
+        // Update active state in top timeline CSS
+        timelineSteps.forEach(step => step.classList.remove('active'));
+        const activeStep = Array.from(timelineSteps).find(s => s.getAttribute('data-location') === locKey);
+        if (activeStep) activeStep.classList.add('active');
+    }
+
+    // Bind timeline clicks to the associated location logic
+    timelineSteps.forEach(step => {
+        step.addEventListener('click', () => {
+            const locKey = step.getAttribute('data-location');
+            activateLocation(locKey);
+        });
+    });
+
+    // Set initial view without animation immediately, then let it rotate
+    setTimeout(() => {
+        activateLocation('india');
+        setTimeout(() => world.controls().autoRotate = true, 500);
+    }, 1000);
+
+    // Hide overlay and resume rotation when clicking off
+    globeContainer.addEventListener('mousedown', () => {
+        infoOverlay.classList.remove('show');
+        setTimeout(() => {
+            world.controls().autoRotate = true;
+        }, 3000);
+    });
+}
+
+// Ensure globe initializes correctly after other scripts load
+document.addEventListener('DOMContentLoaded', () => {
+    // Adding slight delay so container bounds resolve first
+    setTimeout(initJourneyGlobe, 500);
+});

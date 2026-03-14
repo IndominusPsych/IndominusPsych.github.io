@@ -2403,3 +2403,300 @@ body.dark-mode .achievement-icon {
         justify-content: center;
     }
 }
+
+/* Journey Section */
+.journey {
+    background-color: var(--bg-tertiary);
+    position: relative;
+    overflow: hidden;
+}
+
+.journey-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.journey-text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.journey-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.journey-interactive {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px var(--shadow-card);
+    border: 1px solid var(--border-subtle);
+}
+
+/* Timeline Control */
+.journey-timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-green) var(--bg-tertiary);
+}
+
+.journey-timeline::-webkit-scrollbar {
+    height: 6px;
+}
+
+.journey-timeline::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+}
+
+.journey-timeline::-webkit-scrollbar-thumb {
+    background-color: var(--primary-green);
+    border-radius: 3px;
+}
+
+.timeline-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    min-width: 120px;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.timeline-step:hover {
+    transform: translateY(-5px);
+}
+
+.step-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--bg-secondary);
+    border: 3px solid var(--border-primary);
+    border-radius: 50%;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.timeline-step.active .step-dot {
+    background: var(--primary-green);
+    border-color: var(--primary-green-light);
+    box-shadow: 0 0 15px var(--shadow-green-strong);
+}
+
+.step-label {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.step-label small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+}
+
+.timeline-step.active .step-label {
+    color: var(--primary-green);
+}
+
+.step-line {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--border-primary);
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+/* Hide line for the last element */
+.timeline-step:last-child .step-line {
+    display: none;
+}
+
+.timeline-step.active ~ .timeline-step .step-line {
+    background: var(--border-primary);
+}
+
+.timeline-step.active .step-line {
+    background: var(--primary-green);
+}
+
+.timeline-step:has(~ .timeline-step.active) .step-line {
+    background: var(--primary-green);
+}
+
+/* Globe Container */
+.globe-wrapper {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    border: 1px solid var(--border-subtle);
+}
+
+.globe-wrapper:active {
+    cursor: grabbing;
+}
+
+#globeViz {
+    width: 100%;
+    height: 100%;
+}
+
+/* Info Overlay */
+.globe-info-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-primary);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px var(--shadow-card);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+    max-width: 320px;
+    pointer-events: none;
+}
+
+body.dark-mode .globe-info-overlay {
+    background: rgba(21, 21, 21, 0.9);
+}
+
+.globe-info-overlay.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+#globe-info-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: white;
+    padding: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.globe-info-content h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.globe-info-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+.globe-info-time {
+    font-size: 0.8rem !important;
+    color: var(--primary-green) !important;
+    font-weight: 600;
+}
+
+/* Custom Marker Styling */
+.marker-pin {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--primary-green);
+  position: absolute;
+  transform: rotate(-45deg);
+  left: -15px;
+  top: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.marker-pin:hover {
+  transform: rotate(-45deg) scale(1.1);
+  background: var(--primary-green-light);
+  z-index: 100;
+}
+
+.marker-pin::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: white;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.marker-logo {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+    transform: rotate(45deg);
+    object-fit: contain;
+    border-radius: 50%;
+    background: white;
+}
+
+/* Responsiveness adjustments for Journey section */
+@media (max-width: 768px) {
+    .journey-timeline {
+        padding-bottom: 15px;
+    }
+    
+    .timeline-step {
+        min-width: 100px;
+    }
+    
+    .globe-wrapper {
+        height: 350px;
+    }
+    
+    .globe-info-overlay {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        max-width: none;
+    }
+    
+    .journey-interactive {
+        padding: 15px;
+    }
+}
