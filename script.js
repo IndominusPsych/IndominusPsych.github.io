@@ -465,10 +465,10 @@ function initJourneyGlobe() {
     // Location data
     const journeyData = {
         'india': { lat: 8.8932, lng: 76.6340, id: 'india', logo: 'assets/img/tkmce_logo.jpeg', title: 'B.Tech Mechanical Engineering', team: 'TKM College of Engineering', time: 'Aug 2015 - Jul 2019' },
-        'mrf': { lat: 13.0827, lng: 80.2707, id: 'mrf', logo: 'assets/img/mrf_logo.png', title: 'Structural Simulation and AutomationEngineer', team: 'MRF Tyres, Chennai', time: 'Sep 2019 - Mar 2023' },
+        'mrf': { lat: 13.0827, lng: 80.2707, id: 'mrf', logo: 'assets/img/mrf_logo.png', title: 'Structural Simulation and AutomationEngineer', team: 'MRF Tyres', time: 'Sep 2019 - Mar 2023' },
         'thd': { lat: 48.8407, lng: 12.9554, id: 'thd', logo: 'assets/img/thd_logo.png', title: 'M.Eng Mechatronic and Cyber-Physical Systems', team: 'TH Deggendorf', time: 'Mar 2023 - Jan 2026' },
-        'cariad': { lat: 48.7665, lng: 11.4257, id: 'cariad', logo: 'assets/img/cariad_logo.svg', title: 'ADAS/AD Development Engineer', team: 'CARIAD SE', time: 'Jun 2023 - May 2024' },
-        'bmw': { lat: 48.2489, lng: 11.6465, id: 'bmw', logo: 'assets/img/bmw_logo.png', title: 'XR Development Engineer', team: 'BMW Group', time: 'Oct 2024 - Nov 2025' }
+        'cariad': { lat: 48.7665, lng: 11.4257, id: 'cariad', logo: 'assets/img/cariad_logo.svg', title: 'ADAS/AD Development Engineer', team: 'CARIAD', time: 'Jun 2023 - May 2024' },
+        'bmw': { lat: 48.2489, lng: 11.6465, id: 'bmw', logo: 'assets/img/bmw_logo.png', title: 'XR Developer & Technical Artist', team: 'BMW Group', time: 'Oct 2024 - Nov 2025' }
     };
 
     const locationsArray = Object.values(journeyData);
